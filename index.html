@@ -12,11 +12,11 @@
 
     <meta name="description" content="Use 20 free online tools for PDF files, images, GST, EMI, invoices, QR codes, text and more. EasyTools is fast, simple and browser-based.">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://aasmeer.github.io/EasyTools/">
+    <link rel="canonical" href="https://aasmeer.github.io/">
     <meta property="og:title" content="EasyTools - Free Online PDF, Image & Utility Tools">
     <meta property="og:description" content="Use 20 free online tools for PDF files, images, GST, EMI, invoices, QR codes, text and more. EasyTools is fast, simple and browser-based.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://aasmeer.github.io/EasyTools/">
+    <meta property="og:url" content="https://aasmeer.github.io/">
     <meta name="twitter:card" content="summary">
     <title>EasyTools - Free Online PDF, Image & Utility Tools</title>
 
@@ -62,6 +62,13 @@
             width: 180px;
             height: auto;
             display: block;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
         }
 
 
@@ -563,12 +570,15 @@
 
             .mobile-menu-btn {
                 display: inline-flex;
+                flex-shrink: 0;
+                position: relative;
+                z-index: 1001;
             }
 
             nav {
                 display: none;
                 position: absolute;
-                top: 100%;
+                top: calc(100% + 8px);
                 left: 20px;
                 right: 20px;
                 z-index: 1000;
