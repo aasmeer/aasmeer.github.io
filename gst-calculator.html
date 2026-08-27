@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Calculate GST online, add or remove GST, and view tax breakup quickly with the free EasyTools GST Calculator.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://aasmeer.github.io/EasyTools/gst-calculator.html">
+    <meta property="og:title" content="GST Calculator Online - Add or Remove GST | EasyTools">
+    <meta property="og:description" content="Calculate GST online, add or remove GST, and view tax breakup quickly with the free EasyTools GST Calculator.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aasmeer.github.io/EasyTools/gst-calculator.html">
+    <meta name="twitter:card" content="summary">
+    <title>GST Calculator Online - Add or Remove GST | EasyTools</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .tool-page {
+            min-height: 100vh;
+            padding: 60px 20px;
+            background: #f7faff;
+        }
+
+        .tool-container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .tool-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .tool-title h1 {
+            font-size: 42px;
+            margin: 15px 0 10px;
+        }
+
+        .tool-title p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 7px 14px;
+            background: #ecfdf5;
+            color: #047857;
+            border-radius: 30px;
+            font-size: 13px;
+        }
+
+        .calculator-box {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 10px 35px #0000000b;
+        }
+
+        .mode-switch {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .mode-btn {
+            padding: 14px;
+            border: 1px solid #d1d5db;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .mode-btn.active {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        .settings-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .setting {
+            margin-bottom: 22px;
+        }
+
+        .setting label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .setting input,
+        .setting select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d1d5db;
+            border-radius: 9px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .setting input:focus,
+        .setting select:focus {
+            border-color: #2563eb;
+        }
+
+        .custom-rate-wrap {
+            display: none;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 16px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .calculate-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .result {
+            margin-top: 28px;
+            padding: 24px;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+        }
+
+        .result h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .result-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 18px;
+        }
+
+        .result-card span {
+            display: block;
+            color: #64748b;
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
+
+        .result-card strong {
+            font-size: 22px;
+            color: #111827;
+        }
+
+        .total-card {
+            grid-column: 1 / -1;
+            background: #eff6ff;
+            border-color: #bfdbfe;
+        }
+
+        .total-card strong {
+            color: #2563eb;
+            font-size: 28px;
+        }
+
+        .note {
+            margin-top: 20px;
+            padding: 14px;
+            border-radius: 10px;
+            background: #fffbeb;
+            color: #92400e;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        @media(max-width:700px) {
+            .settings-grid,
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tool-title h1 {
+                font-size: 34px;
+            }
+
+            .calculator-box {
+                padding: 20px;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+    </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-013MVTXVKJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-013MVTXVKJ');
+</script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5075468607827149"
+     crossorigin="anonymous"></script></head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        ⚙️ EasyTools
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="all-tools.html">All Tools</a>
+        <a href="index.html#categories">Categories</a>
+        <a href="index.html#pricing">Pricing</a>
+    </nav>
+</header>
+
+
+<main class="tool-page">
+
+    <div class="tool-container">
+
+        <div class="tool-title">
+
+            <span class="badge">
+                💼 Business Tool
+            </span>
+
+            <h1>
+                GST Calculator
+            </h1>
+
+            <p>
+                Add GST or remove GST from an amount and see the tax breakup instantly.
+            </p>
+
+        </div>
+
+
+        <div class="calculator-box">
+
+            <div class="mode-switch">
+
+                <button
+                    class="mode-btn active"
+                    id="addModeBtn"
+                    type="button"
+                >
+                    + Add GST
+                </button>
+
+                <button
+                    class="mode-btn"
+                    id="removeModeBtn"
+                    type="button"
+                >
+                    − Remove GST
+                </button>
+
+            </div>
+
+
+            <div class="settings-grid">
+
+                <div class="setting">
+
+                    <label for="amountInput">
+                        Amount (₹)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="amountInput"
+                        min="0"
+                        step="0.01"
+                        placeholder="Enter amount"
+                    >
+
+                </div>
+
+
+                <div class="setting">
+
+                    <label for="gstRate">
+                        GST Rate
+                    </label>
+
+                    <select id="gstRate">
+
+                        <option value="5">5%</option>
+                        <option value="12">12%</option>
+                        <option value="18" selected>18%</option>
+                        <option value="28">28%</option>
+                        <option value="custom">Custom</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="setting custom-rate-wrap"
+                id="customRateWrap"
+            >
+
+                <label for="customRate">
+                    Custom GST Rate (%)
+                </label>
+
+                <input
+                    type="number"
+                    id="customRate"
+                    min="0"
+                    max="100"
+                    step="0.01"
+                    placeholder="Example: 7.5"
+                >
+
+            </div>
+
+
+            <button
+                class="calculate-btn"
+                id="calculateBtn"
+                type="button"
+            >
+                Calculate GST
+            </button>
+
+
+            <div class="result">
+
+                <h3>
+                    Calculation Result
+                </h3>
+
+
+                <div class="result-grid">
+
+                    <div class="result-card">
+
+                        <span>
+                            Base Amount
+                        </span>
+
+                        <strong id="baseAmount">
+                            ₹0.00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="result-card">
+
+                        <span>
+                            GST Amount
+                        </span>
+
+                        <strong id="gstAmount">
+                            ₹0.00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="result-card">
+
+                        <span>
+                            CGST
+                        </span>
+
+                        <strong id="cgstAmount">
+                            ₹0.00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="result-card">
+
+                        <span>
+                            SGST
+                        </span>
+
+                        <strong id="sgstAmount">
+                            ₹0.00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="result-card total-card">
+
+                        <span id="totalLabel">
+                            Final Amount
+                        </span>
+
+                        <strong id="finalAmount">
+                            ₹0.00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="note">
+
+                    This calculator shows a simple equal CGST/SGST split for convenience.
+                    Actual tax treatment can vary depending on the transaction type and place of supply.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+<!-- EASYTOOLS UNIQUE GUIDE -->
+<section class="et-guide" style="max-width:950px;margin:50px auto;padding:0 20px;line-height:1.75;color:#334155;">
+  <h2 style="font-size:30px;margin-bottom:14px;">Free Online GST Calculator</h2>
+  <p>EasyTools GST Calculator is a simple browser-based tool designed to calculate GST amounts and add or remove GST from a price. It keeps the workflow straightforward so you can complete common tasks without complicated software or unnecessary setup.</p>
+
+  <h2 style="font-size:26px;margin-top:34px;">How to Use the GST Calculator</h2>
+  <p>Enter an amount, select or enter the GST rate, then choose the calculation you need.</p>
+
+  <h2 style="font-size:26px;margin-top:34px;">When Is This Tool Useful?</h2>
+  <p>This tool can be useful for invoices, purchases, pricing and quick tax calculations. Always review the final result before using it for an important submission, payment, application or document.</p>
+
+  <h2 style="font-size:26px;margin-top:34px;">Why Use EasyTools?</h2>
+  <ul style="padding-left:22px;">
+    <li>Simple interface that is easy to understand.</li>
+    <li>Works online in a modern web browser.</li>
+    <li>Designed for quick everyday tasks.</li>
+    <li>No complicated desktop software is required for the basic workflow.</li>
+  </ul>
+
+  <h2 style="font-size:26px;margin-top:34px;">Frequently Asked Questions</h2>
+  <h3>Is the GST Calculator free to use?</h3>
+  <p>EasyTools provides this tool for free online use for its standard features.</p>
+  <h3>Do I need to install software?</h3>
+  <p>No desktop installation is required to use the web tool. Open the page in a supported browser and follow the on-screen options.</p>
+  <h3>Should I check the result before using it?</h3>
+  <p>Yes. For important documents, financial calculations, applications or published material, review the output and confirm that it matches your requirements.</p>
+</section>
+
+</main>
+
+
+<script>
+
+function comingSoon() {
+    alert("This feature will be available soon.");
+}
+
+</script>
+
+<script src="js/gst-calculator.js"></script>
+
+</body>
+
+</html>
