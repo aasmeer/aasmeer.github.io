@@ -497,6 +497,30 @@
         }
 
 
+
+        /* =========================
+           MOBILE MENU
+        ========================= */
+
+        .mobile-menu-btn {
+            display: none;
+            width: 44px;
+            height: 44px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            background: #ffffff;
+            color: #111827;
+            font-size: 24px;
+            line-height: 1;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-btn:hover {
+            background: #f8fafc;
+        }
+
         /* =========================
            RESPONSIVE
         ========================= */
@@ -533,8 +557,43 @@
 
         @media(max-width:700px) {
 
+            .header {
+                position: relative;
+            }
+
+            .mobile-menu-btn {
+                display: inline-flex;
+            }
+
             nav {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 20px;
+                right: 20px;
+                z-index: 1000;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 10px;
+                background: #ffffff;
+                border: 1px solid #e5e7eb;
+                border-radius: 12px;
+                box-shadow: 0 16px 35px rgba(15, 23, 42, 0.12);
+            }
+
+            nav.mobile-open {
+                display: flex;
+            }
+
+            nav a {
+                display: block;
+                padding: 12px 14px;
+                border-radius: 8px;
+            }
+
+            nav a:hover {
+                background: #f8fafc;
             }
 
             .hero {
@@ -615,7 +674,18 @@
     </a>
 
 
-    <nav>
+    <button
+        type="button"
+        class="mobile-menu-btn"
+        id="mobileMenuBtn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mainNav"
+    >
+        ☰
+    </button>
+
+    <nav id="mainNav">
 
         <a href="index.html">
             Home
@@ -1518,6 +1588,49 @@ function comingSoon() {
 
 }
 
+
+
+/* =========================
+   MOBILE NAVIGATION
+========================= */
+
+const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+const mainNav = document.getElementById("mainNav");
+
+if (mobileMenuBtn && mainNav) {
+
+    mobileMenuBtn.addEventListener("click", function() {
+
+        const isOpen = mainNav.classList.toggle("mobile-open");
+
+        mobileMenuBtn.setAttribute(
+            "aria-expanded",
+            isOpen ? "true" : "false"
+        );
+
+        mobileMenuBtn.textContent = isOpen ? "✕" : "☰";
+
+    });
+
+    mainNav.querySelectorAll("a").forEach(function(link) {
+        link.addEventListener("click", function() {
+            mainNav.classList.remove("mobile-open");
+            mobileMenuBtn.setAttribute("aria-expanded", "false");
+            mobileMenuBtn.textContent = "☰";
+        });
+    });
+
+    document.addEventListener("click", function(event) {
+        if (
+            !mainNav.contains(event.target) &&
+            !mobileMenuBtn.contains(event.target)
+        ) {
+            mainNav.classList.remove("mobile-open");
+            mobileMenuBtn.setAttribute("aria-expanded", "false");
+            mobileMenuBtn.textContent = "☰";
+        }
+    });
+}
 
 /* =========================
    TOOL SEARCH
