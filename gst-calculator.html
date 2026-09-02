@@ -230,7 +230,14 @@
 </script>
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5075468607827149"
-     crossorigin="anonymous"></script></head>
+     crossorigin="anonymous"></script>  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="EasyTools">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+</head>
 
 <body>
 
@@ -494,6 +501,12 @@ function comingSoon() {
 </script>
 
 <script src="js/gst-calculator.js"></script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("/service-worker.js"));
+}
+</script>
 
 </body>
 
