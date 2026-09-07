@@ -7,6 +7,7 @@ const sentenceCount = document.getElementById("sentenceCount");
 const paragraphCount = document.getElementById("paragraphCount");
 const readingTime = document.getElementById("readingTime");
 
+const countBtn = document.getElementById("countBtn");
 const copyBtn = document.getElementById("copyBtn");
 const clearBtn = document.getElementById("clearBtn");
 
@@ -90,10 +91,12 @@ function updateCounts() {
 }
 
 
-// LIVE COUNT
-textInput.addEventListener(
-    "input",
-    updateCounts
+// COUNT BUTTON
+countBtn.addEventListener(
+    "click",
+    function() {
+        updateCounts();
+    }
 );
 
 

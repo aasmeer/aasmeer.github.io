@@ -141,7 +141,7 @@
 
         .actions {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 12px;
         }
 
@@ -298,8 +298,7 @@
                 Word Counter
             </h1>
 <p>
-                Count words, characters, sentences,
-                paragraphs and reading time instantly.
+                Count words, characters, sentences, paragraphs and reading time when you click Count Words.
             </p>
 </div>
 <!-- MAIN BOX -->
@@ -369,7 +368,7 @@
 </div>
 </div>
 <!-- BUTTONS -->
-<div class="actions">
+<div class="actions"><button class="action-btn copy-btn" id="countBtn" type="button">🔢 Count Words</button>
 <button class="action-btn copy-btn" id="copyBtn" type="button">
                     📋 Copy Text
                 </button>
@@ -383,8 +382,7 @@
                     💡 Tip:
                 </strong>
 
-                Word Counter updates automatically
-                while you type.
+                Enter or paste your text, then click Count Words to calculate the statistics.
 
                 Reading time is estimated using an
                 average reading speed of approximately
@@ -462,5 +460,6 @@ if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => navigator.serviceWorker.register("/service-worker.js"));
 }
 </script>
+<script src="js/five-second-ad-flow.js"></script>
 </body>
 </html>
