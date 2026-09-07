@@ -16,6 +16,9 @@ const swapBtn =
 const resultValue =
     document.getElementById("resultValue");
 
+const convertBtn =
+    document.getElementById("convertBtn");
+
 
 const units = {
 
@@ -264,20 +267,8 @@ category.addEventListener(
 );
 
 
-inputValue.addEventListener(
-    "input",
-    convert
-);
-
-
-fromUnit.addEventListener(
-    "change",
-    convert
-);
-
-
-toUnit.addEventListener(
-    "change",
+convertBtn.addEventListener(
+    "click",
     convert
 );
 
@@ -297,8 +288,6 @@ swapBtn.addEventListener(
         toUnit.value =
             temp;
 
-
-        convert();
 
     }
 );

@@ -279,22 +279,9 @@ gstRate.addEventListener(
         }
 
 
-        calculateGST();
-
     }
 );
 
-
-amountInput.addEventListener(
-    "input",
-    calculateGST
-);
-
-
-customRate.addEventListener(
-    "input",
-    calculateGST
-);
 
 
 addModeBtn.addEventListener(

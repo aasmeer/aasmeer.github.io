@@ -346,36 +346,3 @@ calculateBtn.addEventListener(
     calculateAge
 );
 
-
-birthDate.addEventListener(
-    "change",
-    function() {
-
-        if (
-            birthDate.value &&
-            targetDate.value
-        ) {
-
-            calculateAge();
-
-        }
-
-    }
-);
-
-
-targetDate.addEventListener(
-    "change",
-    function() {
-
-        if (
-            birthDate.value &&
-            targetDate.value
-        ) {
-
-            calculateAge();
-
-        }
-
-    }
-);

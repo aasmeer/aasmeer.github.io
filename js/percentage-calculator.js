@@ -160,17 +160,6 @@ percentOfBtn.addEventListener(
 );
 
 
-percentValue.addEventListener(
-    "input",
-    calculatePercentOf
-);
-
-
-numberValue.addEventListener(
-    "input",
-    calculatePercentOf
-);
-
 
 /* =========================
    WHAT PERCENT?
@@ -247,17 +236,6 @@ whatPercentBtn.addEventListener(
     calculateWhatPercent
 );
 
-
-partValue.addEventListener(
-    "input",
-    calculateWhatPercent
-);
-
-
-wholeValue.addEventListener(
-    "input",
-    calculateWhatPercent
-);
 
 
 /* =========================
@@ -361,17 +339,5 @@ function calculateChange() {
 
 changeBtn.addEventListener(
     "click",
-    calculateChange
-);
-
-
-oldValue.addEventListener(
-    "input",
-    calculateChange
-);
-
-
-newValue.addEventListener(
-    "input",
     calculateChange
 );
